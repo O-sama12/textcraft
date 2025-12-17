@@ -39,6 +39,10 @@ Or clone the repository:
 git clone https://github.com/O-sama12/textcraft
 ```
 
+Note:
+
+textcraft is currently not published on PyPI, ```pip install``` support will be added in future release.
+
 ---
 
 ## 🧪 Usage / Examples

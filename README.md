@@ -66,12 +66,6 @@ This project is **beginner-friendly** and welcomes:
 - 💡 Feature suggestions
 - 🔧 Pull requests
 
-Please read:
-- `CONTRIBUTING.md`
-- `CODE_OF_CONDUCT.md`
-
-before contributing.
-
 ---
 
 ## 📄 License

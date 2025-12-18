@@ -5,7 +5,7 @@ A lightweight python module for text transformation, cleaning and analysis
 
 """
 
-__version__ = 0.1.1
+__version__ = "0.1.1"
 
 import re
 import string
@@ -94,3 +94,4 @@ def slugify(text: str) -> str:
     return re.sub(r'[\s-]+', '-', text).strip('-')
 
     
+

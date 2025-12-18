@@ -20,7 +20,7 @@ jobs:
 
         - name: Run sanity check
           run: |
-            python -c <<EOF
+            python - <<EOF
             import textcraft
             print(textcraft.to_snake_case("Hello World"))
             EOF

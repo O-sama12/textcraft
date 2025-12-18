@@ -29,15 +29,21 @@ beginner-friendly and open source.
 
 Install Textcraft using pip:
 
-```bash
-pip install textcraft
-```
-
-Or clone the repository:
+clone the repository:
 
 ```bash
 git clone https://github.com/O-sama12/textcraft
 ```
+
+then import the module directly:
+
+```python
+import textcraft
+```
+
+Note:
+
+textcraft is currently not published on PyPI, ```pip install``` support will be added in future release.
 
 ---
 
@@ -65,12 +71,6 @@ This project is **beginner-friendly** and welcomes:
 - 🐞 Bug reports
 - 💡 Feature suggestions
 - 🔧 Pull requests
-
-Please read:
-- `CONTRIBUTING.md`
-- `CODE_OF_CONDUCT.md`
-
-before contributing.
 
 ---
 

@@ -29,6 +29,10 @@ beginner-friendly and open source.
 
 Install Textcraft using pip:
 
+```python
+pip install textcraft-py
+```
+
 clone the repository:
 
 ```bash

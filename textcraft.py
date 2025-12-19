@@ -4,6 +4,9 @@ textcraft.py
 A lightweight python module for text transformation, cleaning and analysis
 
 """
+
+__version__ = "0.1.1"
+
 import re
 import string
 
@@ -89,4 +92,6 @@ def slugify(text: str) -> str:
     text = text.lower()
     text = re.sub(r"[^\w\s-]", "", text)
     return re.sub(r'[\s-]+', '-', text).strip('-')
+
     
+

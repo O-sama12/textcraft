@@ -33,6 +33,8 @@ Install Textcraft using pip:
 pip install textcraft-py
 ```
 
+or 
+
 clone the repository:
 
 ```bash

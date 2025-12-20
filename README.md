@@ -53,9 +53,6 @@ then import the module directly:
 import textcraft
 ```
 
-Note:
-
-textcraft is currently not published on PyPI, ```pip install``` support will be added in future release.
 
 ---
 

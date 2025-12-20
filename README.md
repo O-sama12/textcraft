@@ -1,5 +1,11 @@
 # ✨ Textcraft
 
+![PyPI](https://img.shields.io/pypi/v/textcraft-py)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/textcraft-py)
+![CI](https://github.com/O-sama12/textcraft/actions/workflows/python-ci.yml/badge.svg)
+![License](https://img.shields.io/github/license/O-sama12/textcraft)
+![Build](https://github.com/O-sama12/textcraft/actions/workflows/build.yml/badge.svg)
+
 🧵 A lightweight **Python module** for text transformation, cleaning, and basic analysis —  
 beginner-friendly and open source.
 

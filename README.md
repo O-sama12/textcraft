@@ -81,6 +81,9 @@ This project is **beginner-friendly** and welcomes:
 - 💡 Feature suggestions
 - 🔧 Pull requests
 
+Before contributing, please take a moment to read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+
+
 ---
 
 ## 📄 License

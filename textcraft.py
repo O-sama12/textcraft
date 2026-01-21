@@ -9,6 +9,7 @@ __version__ = "0.1.3"
 
 import re
 import string
+import unicodedata
 
 __all__ = [
     "to_lowercase",
@@ -38,28 +39,50 @@ def to_uppercase(text: str) -> str:
 
 def to_snake_case(text: str) -> str:
     """Convert text to snake_case."""
-    text = re.sub(r'[\s\-]+', '_', text)
-    text = re.sub(r'([a-z0-9])([A-Z])', r'\1_\2', text)
-    return text.lower()
+    if not text:
+        return text
+    return text.replace(" ", "_")
 
 def to_camel_case(text: str) -> str:
     """Convert text to camelCase."""
-    words = re.split(r'[\s\-_]+', text)
-    return words[0].lower() + ''.join(word.capitalize() for word in words[1:])
+    result = []
+    first_alnum_done = False  
+    capitalize_next = False
+
+    for c in text:
+        if c.isalnum():
+            if not first_alnum_done:
+                result.append(c.lower())
+                first_alnum_done = True
+            elif capitalize_next:
+                result.append(c.upper())
+                capitalize_next = False
+            else:
+                result.append(c)
+        else:
+            result.append(c)
+            capitalize_next = True
+
+    return ''.join(result)
 
 def to_kebab_case(text: str) -> str:
     """Convert text to kebab-case."""
-    text = re.sub(r'[\s_]+', '-', text)
-    text = re.sub(r'([a-z0-9])([A-Z])', r'\1-\2', text)
-    return text.lower()
+    if not text or " " not in text:
+        return text
+
+    s = re.sub(r"([A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+)", 
+               lambda mo: ' ' + mo.group(0).lower(), s)
+    return '-'.join(re.sub(r"(\s|_|-)+", " ", s).split())
 
 # --------------------------
 # Cleaning utilities
 # --------------------------
 
 def remove_punctuation(text: str) -> str:
-    """Remove punctuation from text."""
-    return text.translate(str.maketrans('', '', string.punctuation))
+    return ''.join(
+        ch for ch in text
+        if unicodedata.category(ch)[0] not in ('P', 'S')
+    )
 
 def normalize_spaces(text: str) -> str:
     """Normalize multiple spaces to single spaces."""
@@ -81,7 +104,28 @@ def char_count(text: str, include_spaces: bool = False) -> int:
 
 def sentence_count(text: str) -> int:
     """Return number of sentences in text."""
-    return len(re.findall(r'[.!?]+', text))
+    count = 0
+    word_seen = False
+    valid_word = True
+
+    for ch in text:
+        if ch.isalnum():
+            word_seen = True
+
+        elif ch in ".!?":
+            if word_seen and valid_word:
+                count += 1
+            word_seen = False
+            valid_word = True  # reset for next sentence
+
+        elif ch.isspace():
+            continue
+
+        else:
+            # symbol invalidates current word
+            valid_word = False
+
+    return count
 
 # --------------------------
 # Miscellaneous
@@ -89,9 +133,12 @@ def sentence_count(text: str) -> int:
 
 def slugify(text: str) -> str:
     """Convert text into a URL-friendly slug."""
+    if not text:
+        return ""
     text = text.lower()
     text = re.sub(r"[^\w\s-]", "", text)
-    return re.sub(r'[\s-]+', '-', text).strip('-')
+    return re.sub(r'[\s\-_]+', '-', text).strip('-_')
+
 
     
 

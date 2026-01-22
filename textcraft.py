@@ -44,24 +44,49 @@ def to_snake_case(text: str) -> str:
     return text.replace(" ", "_")
 
 def to_camel_case(text: str) -> str:
-    """Convert text to camelCase."""
-    result = []
-    first_alnum_done = False  
-    capitalize_next = False
+    """Convert text to camelCase.
 
-    for c in text:
-        if c.isalnum():
-            if not first_alnum_done:
+    Word boundaries (space, underscore, hyphen) between alphanumeric characters
+    are removed and the following letter is capitalized. Special characters
+    and non-boundary separators are preserved as-is.
+    """
+    if not text:
+        return text
+
+    boundaries = {' ', '_', '-'}
+    result = []
+    first_letter_done = False
+    capitalize_next = False
+    last_char_was_alnum = False
+
+    for i, c in enumerate(text):
+        if c in boundaries:
+            # Look ahead past consecutive boundaries
+            next_idx = i + 1
+            while next_idx < len(text) and text[next_idx] in boundaries:
+                next_idx += 1
+            next_is_alnum = next_idx < len(text) and text[next_idx].isalnum()
+
+            if last_char_was_alnum and next_is_alnum:
+                # This is a word boundary - skip it and mark to capitalize next
+                capitalize_next = True
+            else:
+                # Not a word boundary - preserve it
+                result.append(c)
+                last_char_was_alnum = False
+        elif c.isalpha():
+            if not first_letter_done:
                 result.append(c.lower())
-                first_alnum_done = True
+                first_letter_done = True
             elif capitalize_next:
                 result.append(c.upper())
                 capitalize_next = False
             else:
                 result.append(c)
+            last_char_was_alnum = True
         else:
             result.append(c)
-            capitalize_next = True
+            last_char_was_alnum = c.isalnum()
 
     return ''.join(result)
 

@@ -40,7 +40,7 @@ def test_special_chars_case_convertion():
         "Case for function to_uppercase, failed")
 
 def test_special_chars_snake_case():
-    assert textcraft.to_snake_case("t3$t./' -&%®#") != "t3$t./'_-&%®#", (
+    assert textcraft.to_snake_case("t3$t./' -&%®#") == "t3$t./'_-&%®#", (
         "Case for function to_snake_case, failed")
 
 def test_special_chars_camel_case():

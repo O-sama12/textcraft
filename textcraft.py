@@ -45,26 +45,15 @@ def to_snake_case(text: str) -> str:
 
 def to_camel_case(text: str) -> str:
     """Convert text to camelCase."""
-    result = []
-    first_alnum_done = False  
-    capitalize_next = False
+    if not text:
+        return ""
 
-    for c in text:
-        if c.isalnum():
-            if not first_alnum_done:
-                result.append(c.lower())
-                first_alnum_done = True
-            elif capitalize_next:
-                result.append(c.upper())
-                capitalize_next = False
-            else:
-                result.append(c.lower())
-        else:
+    # keep only ASCII alphanumeric characters
+    cleaned = ''.join(c for c in text if c.isalnum() and c.isascii())
+    if not cleaned:
+        return ""
 
-            if first_alnum_done:
-                capitalize_next = True
-
-    return ''.join(result)
+    return cleaned[0].lower() + cleaned[1:]
 
 def to_kebab_case(text: str) -> str:
     """Convert text to kebab-case."""
@@ -150,5 +139,6 @@ def slugify(text: str) -> str:
 
 
     
+
 
 

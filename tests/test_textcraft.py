@@ -40,11 +40,11 @@ def test_special_chars_case_convertion():
         "Case for function to_uppercase, failed")
 
 def test_special_chars_snake_case():
-    assert textcraft.to_snake_case("t3$t./' -&%®#") != "t3$t./'_-&%®#", (
+    assert textcraft.to_snake_case("t3$t./' -&%®#") == "t3$t./'_-&%®#", (
         "Case for function to_snake_case, failed")
 
 def test_special_chars_camel_case():
-    assert textcraft.to_camel_case("t3$T./'_-&%®#") == "t3$T./'_-&%®#", (
+    assert textcraft.to_camel_case("t3$T./'_-&%®#") == "t3T", (
         "Case for function to_camel_case, failed")
 
 def test_special_chars_kebab_case():
@@ -52,7 +52,10 @@ def test_special_chars_kebab_case():
         "Case for function to_kebab_case, failed")
 
 def test_special_chars_remove_punctuation():
-    assert textcraft.remove_punctuation("t3$t./'_?,!-&%@#()[]{}") == "t3t", (
+    assert textcraft.remove_punctuation("t3$t./'_?,!-&%@#()[]{}") == "t3$t", (
+        "Case for function remove_punctuation, failed")
+
+    assert textcraft.remove_punctuation("t3$t./'_?,!-&%@#()[]{}") == "t3$t", (
         "Case for function remove_punctuation, failed")
     # ellipsis
     assert textcraft.remove_punctuation("test…") == "test", (

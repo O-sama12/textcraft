@@ -41,7 +41,7 @@ def to_snake_case(text: str) -> str:
     """Convert text to snake_case."""
     if not text:
         return text
-    return text.replace(" ", "_")
+    return text.replace(" ", "_").lower()
 
 def to_camel_case(text: str) -> str:
     """Convert text to camelCase."""
@@ -58,17 +58,21 @@ def to_camel_case(text: str) -> str:
                 result.append(c.upper())
                 capitalize_next = False
             else:
-                result.append(c)
+                result.append(c.lower())
         else:
-            result.append(c)
-            capitalize_next = True
+
+            if first_alnum_done:
+                capitalize_next = True
 
     return ''.join(result)
 
 def to_kebab_case(text: str) -> str:
     """Convert text to kebab-case."""
-    if not text or " " not in text:
-        return text
+    if not text:
+        return ""
+    s = text
+    if " " not in s and "_" not in s and not any (c.isupper() for c in s):
+        return s
 
     s = re.sub(r"([A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+)", 
                lambda mo: ' ' + mo.group(0).lower(), s)
@@ -79,9 +83,14 @@ def to_kebab_case(text: str) -> str:
 # --------------------------
 
 def remove_punctuation(text: str) -> str:
+    """
+    Removes all punctuation chars from the string.
+    """
+    if not text:
+        return ""
     return ''.join(
         ch for ch in text
-        if unicodedata.category(ch)[0] not in ('P', 'S')
+        if not unicodedata.category(ch).startswith('P')
     )
 
 def normalize_spaces(text: str) -> str:

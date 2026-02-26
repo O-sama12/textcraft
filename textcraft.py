@@ -5,7 +5,7 @@ A lightweight python module for text transformation, cleaning and analysis
 
 """
 
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 import re
 import string

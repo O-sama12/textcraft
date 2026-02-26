@@ -29,22 +29,33 @@ __all__ = [
 # Text casing
 # --------------------------
 
+def _validate_text(text) -> None:
+    """Validate that input is a string."""
+    if not isinstance(text, str):
+        raise TypeError(
+            f"Expected str, got {type(text).__name__}"
+        )
+
 def to_lowercase(text: str) -> str:
     """Convert text to lowercase."""
+    _validate_text(text)
     return text.lower()
 
 def to_uppercase(text: str) -> str:
     """Convert text to uppercase."""
+    _validate_text(text)
     return text.upper()
 
 def to_snake_case(text: str) -> str:
     """Convert text to snake_case."""
+    _validate_text(text)
     if not text:
         return text
     return text.replace(" ", "_").lower()
 
 def to_camel_case(text: str) -> str:
     """Convert text to camelCase."""
+    _validate_text(text)
     result = []
     first_alnum_done = False  
     capitalize_next = False
@@ -68,6 +79,7 @@ def to_camel_case(text: str) -> str:
 
 def to_kebab_case(text: str) -> str:
     """Convert text to kebab-case."""
+    _validate_text(text)
     if not text:
         return ""
     s = text
@@ -86,6 +98,7 @@ def remove_punctuation(text: str) -> str:
     """
     Removes all punctuation chars from the string.
     """
+    _validate_text(text)
     if not text:
         return ""
     return ''.join(
@@ -95,6 +108,7 @@ def remove_punctuation(text: str) -> str:
 
 def normalize_spaces(text: str) -> str:
     """Normalize multiple spaces to single spaces."""
+    _validate_text(text)
     return " ".join(text.split())
 
 # --------------------------
@@ -103,16 +117,19 @@ def normalize_spaces(text: str) -> str:
 
 def word_count(text: str) -> int:
     """Returns number of words in text."""
+    _validate_text(text)
     return len(text.split())
 
 def char_count(text: str, include_spaces: bool = False) -> int:
     """Returns number of characters in text."""
+    _validate_text(text)
     if include_spaces:
         return len(text)
     return len(text.replace(" ", ""))
 
 def sentence_count(text: str) -> int:
     """Return number of sentences in text."""
+    _validate_text(text)
     count = 0
     word_seen = False
     valid_word = True
@@ -142,6 +159,7 @@ def sentence_count(text: str) -> int:
 
 def slugify(text: str) -> str:
     """Convert text into a URL-friendly slug."""
+    _validate_text(text)
     if not text:
         return ""
     text = text.lower()

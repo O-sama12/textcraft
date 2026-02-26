@@ -8,14 +8,14 @@ version = "0.1.4"
 description = "A lightweight, beginner-friendly Python module for text transformation and analysis"
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "MIT" }
+license = "MIT" 
 authors = [
   { name = "O-sama12" }
 ]
 classifiers = [
   "Programming Language :: Python :: 3",
-  "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent"
 ]
+
 
 

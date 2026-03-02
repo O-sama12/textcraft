@@ -23,6 +23,7 @@ __all__ = [
     "char_count",
     "sentence_count",
     "slugify",
+    "to_title_case"
 ]
 
 # --------------------------
@@ -166,7 +167,12 @@ def slugify(text: str) -> str:
     text = re.sub(r"[^\w\s-]", "", text)
     return re.sub(r'[\s\-_]+', '-', text).strip('-_')
 
-
+def to_title_case(text: str) -> str:
+    """Convert text to Title Case."""
+    _validate_text(text)
+    if not text:
+        return ""
+    return " ".join(text.split()).title()
     
 
 

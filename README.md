@@ -124,6 +124,7 @@ kebab_case = txt.to_kebab_case(function_name)  # "my-function-name"
 | `remove_punctuation()` | `"Hello, World!"` | `"Hello World"` |
 | `word_count()` | `"Hello World"` | `2` |
 | `slugify()` | `"Hello, World!"` | `"hello-world"` |
+| `to_title_case()`| | `"Hello, World!"` | `"Hello World"` |
 
 ---
 

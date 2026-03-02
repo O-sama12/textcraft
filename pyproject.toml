@@ -18,9 +18,4 @@ classifiers = [
 ]
 
 [tool.setuptools]
-# Only include the main module in the package
 py-modules = ["textcraft"]
-
-[tool.setuptools.exclude-package-data]
-# Exclude test files from the distribution
-"" = ["tests/*"]

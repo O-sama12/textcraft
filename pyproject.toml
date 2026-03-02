@@ -18,4 +18,5 @@ classifiers = [
 ]
 
 [tool.setuptools]
-py-modules = ["textcraft"]
+package-dir = {"" = "src"}
+packages = ["textcraft"]

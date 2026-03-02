@@ -4,6 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "textcraft-py"
+py-modules = ["textcraft"]
 version = "0.1.4"
 description = "A lightweight, beginner-friendly Python module for text transformation and analysis"
 readme = "README.md"
@@ -16,6 +17,7 @@ classifiers = [
   "Programming Language :: Python :: 3",
   "Operating System :: OS Independent"
 ]
+
 
 
 

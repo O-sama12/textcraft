@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,7 +8,7 @@ version = "0.1.4"
 description = "A lightweight, beginner-friendly Python module for text transformation and analysis"
 readme = "README.md"
 requires-python = ">=3.8"
-license = "MIT" 
+license = "MIT"
 authors = [
   { name = "O-sama12" }
 ]
@@ -16,5 +16,11 @@ classifiers = [
   "Programming Language :: Python :: 3",
   "Operating System :: OS Independent"
 ]
+
 [tool.setuptools]
+# Only include the main module in the package
 py-modules = ["textcraft"]
+
+[tool.setuptools.exclude-package-data]
+# Exclude test files from the distribution
+"" = ["tests/*"]
